@@ -1,11 +1,15 @@
 <template name="categories">
   <div class="grid-small grid-block dialog admin">
-    <h2>Categories</h2>
+    <h2>Topics</h2>
     <form class="form-block">
-      <h3>Add new category</h3>
+      <h3>Add new topic or subtopic</h3>
       <div class="control-group">
-        <label>Name</label>
+        <label>Name:</label>
         <div class="controls"><input id="name" type="text" value="" /></div>
+        <label>Is a Subtopic?</label>
+        <div class="controls"><input id="isSubCategory" type="checkbox" /></div>
+        <label>Of Topic:</label>
+        <div class="controls"><input id="parentCategory" type="text" value="" /></div>
       </div>
       <div class="form-actions">
         <input type="submit" class="button" value="Submit" />
