@@ -1,5 +1,13 @@
 <template name="sidebar">
 		<div class="sidebar desktop">
-			<a href="#" class="sidebar-toggle">Sidebar</a>
+			<a href="#" class="sidebar-toggle">Topics</a>
+      <div id="filterFieldContainer">
+        <input id="categoryFilter" type="search" class="filter-field" placeholder="Filter Topics">
+      </div>
+      <ul id="categoryList">
+        {{#each categories}}
+          {{> sidebar_item }}
+        {{/each}}
+      </ul>
 		</div>
 </template>

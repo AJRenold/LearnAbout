@@ -25,15 +25,6 @@ Template.nav.helpers({
   },
   requirePostsApproval: function(){
     return getSetting('requirePostsApproval');
-  },
-  hasCategories: function(){
-    return Categories.find().count();
-  },
-  categories: function(){
-    return Categories.find();
-  },
-  categoryLink: function () {
-    return getCategoryUrl(this.slug);
   }
 });
 
