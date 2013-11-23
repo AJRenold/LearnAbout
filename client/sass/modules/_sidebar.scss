@@ -23,10 +23,15 @@
 		li{
 			padding:10px;
 			border-bottom:1px solid $lighter-grey;
-			font-size:13px;
+			font-size:18px;
 			background:white;
 			}
 		}
+  .home{
+    a{
+      margin: 0px 10px 0px 10px;
+    }
+  }
 	.sidebar-toggle{
 		display:block;
 		position:absolute;

@@ -5,9 +5,16 @@
         <input id="categoryFilter" type="search" class="filter-field" placeholder="Filter Topics">
       </div>
       <ul id="categoryList">
-        {{#each categories}}
-          {{> sidebar_item }}
-        {{/each}}
+        {{#if isSubMenu }}
+          <li class="home"><a href="/">x</a>{{ currentParent }}</li>
+          {{#each postCategories}}
+            {{> sidebar_item }}
+          {{/each}}
+        {{else}}
+          {{#each categories}}
+            {{> sidebar_item}}
+          {{/each}}
+        {{/if }}
       </ul>
 		</div>
 </template>

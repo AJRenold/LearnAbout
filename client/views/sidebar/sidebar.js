@@ -1,7 +1,32 @@
 Template.sidebar.helpers({
   categories : function() {
     return Categories.find();
+  }, 
+  isSubMenu : function() {
+    var isSubMenu;
+    if(Session.get('categorySlug')){
+      isSubMenu = true;
+    } else {
+      isSubMenu = false;
+    }
+    return isSubMenu;
+  },
+  currentParent : function() {
+    return Session.get('categorySlug');
+  },
+  postCategories : function(){
+    parent = Session.get('categorySlug');
+    var posts = Posts.find({ categories: { $elemMatch: { slug: parent } } });
+    subCategories = [];
+    posts.forEach(function(post){
+      _.each(post.categories, function(cat){
+        if(cat.slug !== parent)
+          subCategories.push(cat);
+      });
+    });
+    return subCategories;
   }
+
 });
 
 Template.sidebar.events({
@@ -12,7 +37,6 @@ Template.sidebar.events({
   'keyup, search, .filter-field': function(e){
     e.preventDefault();
     var val = $(e.target).val();
-    console.log(val);
     $("#categoryList > li").each(function() {
       if ($(this).text().search(val) > -1) {
           $(this).show();
