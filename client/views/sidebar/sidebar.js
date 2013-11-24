@@ -37,7 +37,7 @@ Template.sidebar.events({
   'keyup, search, .filter-field': function(e){
     e.preventDefault();
     var val = $(e.target).val();
-    $("#categoryList > li").each(function() {
+    $("#categoryList > li.category-item").each(function() {
       if ($(this).text().search(val) > -1) {
           $(this).show();
       }
@@ -46,9 +46,25 @@ Template.sidebar.events({
       }
     });
   },
+  'click .home a': function(e){
+    Session.set('subCategories', []);
+  },
   'click .category-link': function(e){
-    var parentCategory = $(e.target).text();
-    var resCursor = Posts.find({ 'categories': { $in: [ parentCategory ] } });
+
+    var categoryName = $(e.target).text();
+    subCategories = Session.get('subCategories');
+    if(subCategories.length !== 0){
+      e.preventDefault();
+    }
+    
+    idx = _.indexOf(subCategories, categoryName);
+    if(idx !== -1){
+      subCategories.splice(idx, 1);
+    } else {
+      subCategories.push(categoryName);
+    }
+      //$(e.target).parent().toggleClass('category-selected');
+    Session.set('subCategories', subCategories);
 
     // { tags: { $in: ["appliances", "school"] } }
   }

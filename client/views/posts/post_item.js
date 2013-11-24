@@ -138,5 +138,21 @@ Template.post_item.events = {
       if(error)
         console.log(error);
     });
+  },
+  'click .post-category': function(e){
+    var categoryName = $(e.target).text();
+    subCategories = Session.get('subCategories');
+    if(subCategories.length !== 0){
+      e.preventDefault();
+    }
+
+    idx = _.indexOf(subCategories, categoryName);
+    if(idx !== -1){
+      subCategories.splice(idx, 1);
+    } else {
+      subCategories.push(categoryName);
+    }
+      //$(e.target).parent().toggleClass('category-selected');
+    Session.set('subCategories', subCategories); 
   }
 };

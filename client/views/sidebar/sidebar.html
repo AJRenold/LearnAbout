@@ -4,13 +4,14 @@
       <div id="filterFieldContainer">
         <input id="categoryFilter" type="search" class="filter-field" placeholder="Filter Topics">
       </div>
-      <ul id="categoryList">
         {{#if isSubMenu }}
+        <ul id="categoryList">
           <li class="home"><a href="/">x</a>{{ currentParent }}</li>
           {{#each postCategories}}
             {{> sidebar_item }}
           {{/each}}
         {{else}}
+        <ul id="categoryList">
           {{#each categories}}
             {{> sidebar_item}}
           {{/each}}

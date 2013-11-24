@@ -5,6 +5,7 @@ Session.set('view', 'top');
 Session.set('postsLimit', getSetting('postsPerPage', 10));
 Session.set('settingsLoaded', false);
 Session.set('sessionId', Meteor.default_connection._lastSessionId);
+Session.set('subCategories', [])
 
 // Subscriptions
 

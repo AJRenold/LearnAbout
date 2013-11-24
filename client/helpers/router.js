@@ -253,6 +253,7 @@ PostsListController = RouteController.extend({
       view: this.path == '/' ? 'top' : this.path.split('/')[1],
       limit: this.params.limit || getSetting('postsPerPage', 10),
       category: this.params.slug,
+      subCategories: Session.get("subCategories"),
       query: Session.get("searchQuery")
     }
     return [
@@ -264,7 +265,7 @@ PostsListController = RouteController.extend({
     var parameters = getParameters(this._terms),
         posts = Posts.find(parameters.find, parameters.options);
         postsCount = posts.count();
-  
+
     Session.set('postsLimit', this._terms.limit);
 
     return {
@@ -275,7 +276,7 @@ PostsListController = RouteController.extend({
   after: function() {
     var view = this.path == '/' ? 'top' : this.path.split('/')[1];
     Session.set('view', view);
-  }    
+  }
 });
 
 // Controller for post digest
