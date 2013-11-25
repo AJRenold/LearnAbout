@@ -1,0 +1,19 @@
+<template name="playlist_submit">
+  <div class="grid submit">
+    <form class="grid-block form-horizontal">
+      <div class="control-group">
+        <label class="control-label">{{i18n "Playlist Name"}}</label>
+        <div class="controls">
+          <input id="name" type="text" value="" />
+          <input id="postUser" type="hidden" value="{{user_id}}">
+        </div>
+      </div>
+      <div class="form-actions">
+        <input type="submit" value="{{i18n "Submit"}}" />
+      </div>
+    </form>
+    <div>
+      {{ playlists }}
+    </div>
+  </div>
+</template>
