@@ -254,6 +254,7 @@ PostsListController = RouteController.extend({
       limit: this.params.limit || getSetting('postsPerPage', 10),
       category: this.params.slug,
       subCategories: Session.get("subCategories"),
+      postDifficulty: Session.get("postDifficulty"),
       query: Session.get("searchQuery")
     }
     return [

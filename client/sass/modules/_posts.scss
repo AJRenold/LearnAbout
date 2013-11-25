@@ -127,6 +127,7 @@
 			font-weight:normal;
 		}
     .post-difficulty{
+      cursor:pointer;
 			display:inline-block;
 			font-size:11px;
 			@include border-radius(3px);

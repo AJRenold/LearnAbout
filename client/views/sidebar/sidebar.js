@@ -1,7 +1,16 @@
 Template.sidebar.helpers({
   categories : function() {
     return Categories.find();
-  }, 
+  },
+  checkBeginnerFilter : function() {
+    return Session.get('postDifficulty') == 'Beginner' ? 'checked' : '';
+  },
+  checkIntermediateFilter : function() {
+    return Session.get('postDifficulty') == 'Intermediate' ? 'checked' : '';
+  },
+  checkAdvancedFilter : function() {
+    return Session.get('postDifficulty') == 'Advanced' ? 'checked' : ''; 
+  },
   isSubMenu : function() {
     var isSubMenu;
     if(Session.get('categorySlug')){
@@ -50,6 +59,16 @@ Template.sidebar.events({
           $(this).hide();
       }
     });
+  },
+  'click #difficultyFilterContainer input': function(e){
+    var val = $(e.target).val();
+    var currentFilter = Session.get('postDifficulty');
+    if(val !== currentFilter) {
+      Session.set('postDifficulty', val);
+    } else {
+      Session.set('postDifficulty', '');
+    }
+    console.log(Session.get('postDifficulty'))
   },
   'click .home a': function(e){
     Session.set('subCategories', []);

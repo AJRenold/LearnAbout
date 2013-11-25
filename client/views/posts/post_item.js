@@ -154,5 +154,14 @@ Template.post_item.events = {
     }
       //$(e.target).parent().toggleClass('category-selected');
     Session.set('subCategories', subCategories); 
+  },
+  'click .post-difficulty': function(e){
+    var val = $(e.target).text();
+    var currentFilter = Session.get('postDifficulty');
+    if(val !== currentFilter) {
+      Session.set('postDifficulty', val);
+    } else {
+      Session.set('postDifficulty', '');
+    }
   }
 };
