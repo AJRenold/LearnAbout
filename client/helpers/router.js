@@ -256,7 +256,7 @@ PlaylistsListController = RouteController.extend({
     ]
   },
   data: function () {
-    var parameters = getParameters(this._terms),
+    var parameters = getParametersPlaylists(this._terms),
         playlists = Playlists.find(parameters.find, parameters.options);
         playlistsCount = playlists.count();
   
@@ -282,7 +282,7 @@ PostsListController = RouteController.extend({
     // take the first segment of the path to get the view, unless it's '/' in which case the view default to 'top'
     // note: most of the time this.params.slug will be empty
     this._terms = {
-      view: this.path == '/' ? 'top' : this.path.split('/')[1],
+      view: this.path == '/' ? 'best' : this.path.split('/')[1],
       limit: this.params.limit || getSetting('postsPerPage', 10),
       category: this.params.slug,
       subCategories: Session.get("subCategories"),
@@ -307,7 +307,7 @@ PostsListController = RouteController.extend({
     }
   },
   after: function() {
-    var view = this.path == '/' ? 'top' : this.path.split('/')[1];
+    var view = this.path == '/' ? 'best' : this.path.split('/')[1];
     Session.set('view', view);
   }
 });

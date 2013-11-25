@@ -50,10 +50,10 @@ Template.sidebar.events({
 	},
   'keyup, search, .filter-field': function(e){
     e.preventDefault();
-    var val = $(e.target).val();
+    var val = $(e.target).val().toLowerCase();
     $("#categoryList > li.category-item").each(function() {
-      if ($(this).text().search(val) > -1) {
-          $(this).show();
+      if ($(this).text().toLowerCase().search(val) > -1) {
+          $(this).show()
       }
       else {
           $(this).hide();
@@ -68,7 +68,6 @@ Template.sidebar.events({
     } else {
       Session.set('postDifficulty', '');
     }
-    console.log(Session.get('postDifficulty'))
   },
   'click .home a': function(e){
     Session.set('subCategories', []);
@@ -77,20 +76,16 @@ Template.sidebar.events({
 
     var categoryName = $(e.target).text();
     var subCategories = Session.get('subCategories');
-    console.log(subCategories);
     if(subCategories.length !== 0){
       e.preventDefault();
     }
-    
+
     idx = _.indexOf(subCategories, categoryName);
     if(idx !== -1){
       subCategories.splice(idx, 1);
     } else {
       subCategories.push(categoryName);
     }
-      //$(e.target).parent().toggleClass('category-selected');
     Session.set('subCategories', subCategories);
-
-    // { tags: { $in: ["appliances", "school"] } }
   }
 });
