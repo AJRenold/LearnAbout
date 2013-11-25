@@ -23,18 +23,22 @@
 		li{
 			padding:10px;
 			border-bottom:1px solid $lighter-grey;
-			font-size:18px;
+			font-size:16px;
 			background:white;
+      text-transform:uppercase;
 			}
     .category-selected{
       background:lightgrey;
     }
-	}
-  .home{
-    a{
-      margin: 0px 10px 0px 10px;
+    .home{
+      font-weight:bold;
+		  color:$medium-text;
+      a{
+        margin: 0px 10px 0px 10px;
+      }
     }
-  }
+	}
+
 	.sidebar-toggle{
 		display:block;
 		position:absolute;

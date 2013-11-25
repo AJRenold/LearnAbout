@@ -25,6 +25,18 @@ Template.nav.helpers({
   },
   requirePostsApproval: function(){
     return getSetting('requirePostsApproval');
+  },
+  currentParent: function(){
+    return Session.get('categorySlug');
+  },
+  isCategoryPage: function() {
+    var isSubMenu;
+    if(Session.get('categorySlug')){
+      isSubMenu = true;
+    } else {
+      isSubMenu = false;
+    }
+    return isSubMenu;
   }
 });
 

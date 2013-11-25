@@ -136,7 +136,7 @@
 	>li{
 		@include horizontal-list-item;
 		margin-right:10px;
-
+    
 		>a{
 			color:white;
 			font-size:16px;
@@ -154,6 +154,14 @@
 			}
 		}
 	}
+  .category-header {
+  color:white;
+  font-size:22px;
+  line-height:34px;
+  height:26px;
+  font-weight:normal;
+  text-transform:uppercase;
+}
 }
 .search{
 	position: relative;

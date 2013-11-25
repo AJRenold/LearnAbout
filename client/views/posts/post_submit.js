@@ -24,6 +24,12 @@ Template.post_submit.rendered = function(){
 
   $("#postUser").selectToAutocomplete();
 
+  $("#topics").tokenInput(Categories.find().fetch(),{
+    theme: 'facebook',
+    hintText: "Look up a topic",
+    noResultsText: "No topics found",
+  });
+
 }
 
 Template.post_submit.events = {
@@ -42,20 +48,24 @@ Template.post_submit.events = {
     var shortUrl = $('#short-url').val();
     var body = instance.editor.exportFile();
     var categories=[];
+    var difficulty = $('input[name=difficulty]:checked').val();
+    var resourceType = $('#resourceType').val();
     var sticky=!!$('#sticky').attr('checked');
     var submitted = $('#submitted_hidden').val();
     var userId = $('#postUser').val();
     var status = parseInt($('input[name=status]:checked').val());
 
-    $('input[name=category]:checked').each(function() {
-      categories.push(Categories.findOne($(this).val()));
-     });
+    _.each($('#topics').tokenInput('get'), function(cat) {
+      categories.push(Categories.findOne({ 'name': cat.name }));
+    });
 
     var properties = {
         headline: title
       , body: body
       , shortUrl: shortUrl
       , categories: categories
+      , resourceType : resourceType
+      , difficulty : difficulty
       , sticky: sticky
       , submitted: submitted
       , userId: userId

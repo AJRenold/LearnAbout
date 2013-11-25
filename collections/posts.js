@@ -9,7 +9,7 @@ Posts.deny({
     if(isAdminById(userId))
       return false;
     // deny the update if it contains something other than the following fields
-    return (_.without(fieldNames, 'headline', 'url', 'body', 'shortUrl', 'shortTitle', 'categories').length > 0);
+    return (_.without(fieldNames, 'headline', 'url', 'body', 'resourceType', 'difficulty', 'shortUrl', 'shortTitle', 'categories').length > 0);
   }
 });
 
@@ -27,6 +27,8 @@ Meteor.methods({
         body = cleanUp(post.body),
         user = Meteor.user(),
         userId = user._id,
+        resourceType = post.resourceType,
+        difficulty = post.difficulty,
         submitted = parseInt(post.submitted) || new Date().getTime(),
         defaultStatus = getSetting('requirePostsApproval') ? STATUS_PENDING : STATUS_APPROVED,
         status = post.status || defaultStatus,
@@ -69,6 +71,8 @@ Meteor.methods({
       headline: headline,
       body: body,
       userId: userId,
+      resourceType: resourceType,
+      difficulty: difficulty,
       author: getDisplayNameById(userId),
       createdAt: new Date().getTime(),
       votes: 0,

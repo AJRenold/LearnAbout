@@ -416,7 +416,7 @@ Router.map(function() {
   // Categories
 
   this.route('posts_category', {
-    path: '/category/:slug/:limit?',
+    path: '/topic/:slug/:limit?',
     controller: PostsListController,
     after: function() {
       Session.set('categorySlug', this.params.slug);
