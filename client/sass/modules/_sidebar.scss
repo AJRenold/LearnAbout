@@ -23,18 +23,22 @@
 		li{
 			padding:10px;
 			border-bottom:1px solid $lighter-grey;
-			font-size:13px;
+			font-size:16px;
 			background:white;
-			.notification-timestamp{
-				color:$light-text;
-				font-size:12px;
+      text-transform:uppercase;
 			}
-			&.read{
-				color:$light-text;
-				background:#f3f3f3;
-			}
-		}
+    .category-selected{
+      background:lightgrey;
+    }
+    .home{
+      font-weight:bold;
+		  color:$medium-text;
+      a{
+        margin: 0px 10px 0px 10px;
+      }
+    }
 	}
+
 	.sidebar-toggle{
 		display:block;
 		position:absolute;
@@ -53,4 +57,31 @@
 		left:0px;
 		@include box-shadow(1px 0px 1px black(0.15));
 	}
+
+  #filterFieldContainer{
+		padding:10px;
+		border-bottom:1px solid $lighter-grey;
+		font-size:13px;
+		background:white;
+  }
+  .filter-field{
+    font-size: 14px;
+		padding: 4px 12px;
+		line-height: 1.3;
+		border-radius: 20px;
+		border: 1px;
+    margin-left: 5%;
+		width: 90%;
+		background: lightgrey;
+		&:focus{
+			outline:none;
+		}
+  }
+}
+
+#difficultyFilterContainer{
+  padding:10px;
+  border-bottom:1px solid $lighter-grey;
+  font-size:13px;
+  background:white;
 }

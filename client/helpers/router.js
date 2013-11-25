@@ -285,6 +285,8 @@ PostsListController = RouteController.extend({
       view: this.path == '/' ? 'top' : this.path.split('/')[1],
       limit: this.params.limit || getSetting('postsPerPage', 10),
       category: this.params.slug,
+      subCategories: Session.get("subCategories"),
+      postDifficulty: Session.get("postDifficulty"),
       query: Session.get("searchQuery")
     }
     return [
@@ -296,7 +298,7 @@ PostsListController = RouteController.extend({
     var parameters = getParameters(this._terms),
         posts = Posts.find(parameters.find, parameters.options);
         postsCount = posts.count();
-  
+
     Session.set('postsLimit', this._terms.limit);
 
     return {
@@ -307,7 +309,7 @@ PostsListController = RouteController.extend({
   after: function() {
     var view = this.path == '/' ? 'top' : this.path.split('/')[1];
     Session.set('view', view);
-  }    
+  }
 });
 
 // Controller for post digest
@@ -447,7 +449,7 @@ Router.map(function() {
   // Categories
 
   this.route('posts_category', {
-    path: '/category/:slug/:limit?',
+    path: '/topic/:slug/:limit?',
     controller: PostsListController,
     after: function() {
       Session.set('categorySlug', this.params.slug);

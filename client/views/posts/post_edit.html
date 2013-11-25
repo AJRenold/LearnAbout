@@ -34,6 +34,31 @@
             {{/each}}
           </div>
         </div>
+        <div class="control-group">
+          <label class="control-label">Difficulty</label>
+          <div class="controls">
+            <label class="radio inline">
+              <input id="difficulty_beg" type="radio" value="beginner" name="difficulty" checked/> Beginner
+            </label>
+            <label class="radio inline">
+              <input id="difficulty_int" type="radio" value="intermediate" name="difficulty" /> Intermediate
+            </label>
+            <label class="radio inline">  
+              <input id="difficulty_adv" type="radio" value="advanced" name="difficulty"/> Advanced
+            </label>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Resource Type</label>
+          <div class="controls">
+          <select id="resourceType">
+            <option value="Book">Book</option>
+            <option value="Exercise">Exercise</option>
+            <option value="Video">Video</option>
+            <option value="Documentation">Documentation</option>
+          </select>
+          </div>
+        </div>
         {{#if isAdmin}}
           <div class="control-group post-form-sticky">
             <label class="control-label">{{i18n "Inactive?"}}</label>

@@ -26,14 +26,17 @@ Template.nav.helpers({
   requirePostsApproval: function(){
     return getSetting('requirePostsApproval');
   },
-  hasCategories: function(){
-    return Categories.find().count();
+  currentParent: function(){
+    return Session.get('categorySlug');
   },
-  categories: function(){
-    return Categories.find();
-  },
-  categoryLink: function () {
-    return getCategoryUrl(this.slug);
+  isCategoryPage: function() {
+    var isSubMenu;
+    if(Session.get('categorySlug')){
+      isSubMenu = true;
+    } else {
+      isSubMenu = false;
+    }
+    return isSubMenu;
   }
 });
 
