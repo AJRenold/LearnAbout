@@ -126,6 +126,25 @@
 			font-size:14px;
 			font-weight:normal;
 		}
+    .post-difficulty{
+			display:inline-block;
+			font-size:11px;
+			@include border-radius(3px);
+			padding:0px 6px;
+			text-transform:uppercase;
+			font-weight:normal;
+			vertical-align:middle;
+      color:white;
+		}
+    .Beginner {
+        background: #70EAFF;
+    }
+    .Intermediate{
+        background: #3185BD;
+    }
+    .Advanced{
+        background: #09297A;
+    }
 		.post-category{
 			display:inline-block;
 			font-size:11px;

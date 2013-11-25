@@ -16,17 +16,22 @@ Template.sidebar.helpers({
   },
   postCategories : function(){
     parent = Session.get('categorySlug');
-    var posts = Posts.find({ categories: { $elemMatch: { slug: parent } } });
-    subCategories = [];
-    posts.forEach(function(post){
-      _.each(post.categories, function(cat){
-        if(cat.slug !== parent)
-          subCategories.push(cat);
+    var _posts = Posts.find({ categories: { $elemMatch: { slug: parent } } }).fetch();
+    var subCats = [];
+    var subCatIDs = [];
+
+    _.each(_posts, function(p){
+      _.each(p.categories, function(cat){
+        if(cat.slug !== parent){
+          if(!_.contains(subCatIDs, cat._id)){
+            subCatIDs.push(cat._id);
+            subCats.push(cat);
+          }
+        }
       });
     });
-    return subCategories;
+    return subCats;
   }
-
 });
 
 Template.sidebar.events({
@@ -52,7 +57,8 @@ Template.sidebar.events({
   'click .category-link': function(e){
 
     var categoryName = $(e.target).text();
-    subCategories = Session.get('subCategories');
+    var subCategories = Session.get('subCategories');
+    console.log(subCategories);
     if(subCategories.length !== 0){
       e.preventDefault();
     }

@@ -14,6 +14,12 @@ Template.post_submit.helpers({
   }
 });
 
+Template.post_submit.created = function(){
+
+  addTokenInput = true;
+
+}
+
 Template.post_submit.rendered = function(){
   Session.set('selectedPostId', null);
   if(!this.editor && $('#editor').exists())
@@ -24,11 +30,14 @@ Template.post_submit.rendered = function(){
 
   $("#postUser").selectToAutocomplete();
 
-  $("#topics").tokenInput(Categories.find().fetch(),{
-    theme: 'facebook',
-    hintText: "Look up a topic",
-    noResultsText: "No topics found",
-  });
+  if(addTokenInput) {
+    addTokenInput = false;
+    $("#topics").tokenInput(Categories.find().fetch(),{
+      theme: 'facebook',
+      hintText: "Look up a topic",
+      noResultsText: "No topics found"
+    });
+  }
 
 }
 

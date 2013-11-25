@@ -4,6 +4,12 @@
       <div id="filterFieldContainer">
         <input id="categoryFilter" type="search" class="filter-field" placeholder="Filter Topics">
       </div>
+      <div id="difficultyFilterContainer">
+        <label>Difficulty Filter</label></br>
+        <label for="Beginner">Beginner</label><input type="checkbox" id="Beginner" value="Beginner" /></br>
+        <label for="Intermediate">Intermediate</label><input type="checkbox" id="Intermediate" value="Intermediate" /></br>
+        <label for="Advanced">Advanced</label><input type="checkbox" id="Advanced" value="Advanced" /></br>
+      </div>
         {{#if isSubMenu }}
         <ul id="categoryList">
           <li class="home"><a href="/">x</a>{{ currentParent }}</li>
