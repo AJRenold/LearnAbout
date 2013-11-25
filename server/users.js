@@ -5,6 +5,7 @@ Accounts.onCreateUser(function(options, user){
     isInvited: false,
     isAdmin: false,
     postCount: 0,
+    playlistCount: 0,
     commentCount: 0,
     invitedCount: 0
   }

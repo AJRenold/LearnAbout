@@ -241,6 +241,38 @@ Router.after( function () {
 //------------------------------------------- Controllers ------------------------------------------//
 //--------------------------------------------------------------------------------------------------//
 
+// Controller for all playlists lists
+PlaylistsListController = RouteController.extend({
+  template:'playlists_list',
+  waitOn: function () {
+    // take the first segment of the path to get the view, unless it's '/' in which case the view default to 'top'
+    // note: most of the time this.params.slug will be empty
+    this._terms = {
+      view: this.path == '/' ? 'top' : this.path.split('/')[1],
+      limit: this.params.limit || getSetting('playlistsPerPage', 10)
+    }
+    return [
+      Meteor.subscribe('playlistsList'),
+    ]
+  },
+  data: function () {
+    var parameters = getParameters(this._terms),
+        playlists = Playlists.find(parameters.find, parameters.options);
+        playlistsCount = playlists.count();
+  
+    Session.set('playlistsLimit', this._terms.limit);
+
+    return {
+      playlistsList: playlists,
+      playlistsCount: playlistsCount
+    }
+  },
+  after: function() {
+    var view = this.path == '/' ? 'top' : this.path.split('/')[1];
+    Session.set('view', view);
+  }    
+});
+
 
 // Controller for all posts lists
 
@@ -476,6 +508,10 @@ Router.map(function() {
   // Post Submit
 
   this.route('post_submit', {path: '/submit'});
+
+  // -------------------------------------------- Playlists -------------------------------------------- //
+  this.route('playlist_submit', {path: '/playlist_submit'});
+  this.route('playlists_list', {path: '/playlists_list'});
 
   // -------------------------------------------- Comment -------------------------------------------- //
   

@@ -121,6 +121,20 @@ Meteor.publish('commentPost', function(commentId) {
   return [];
 });
 
+// Publish a list of playlists
+Meteor.publish('playlistsList', function(terms) {
+  //var parameters = getParameters(terms),
+    var playlists = Playlists.find();
+    // console.log('//-------- Subscription Parameters:');
+    // console.log(parameters.find);
+    // console.log(parameters.options);
+    // console.log('Found '+posts.fetch().length+ ' posts:');
+    // posts.rewind();
+    // console.log(_.pluck(posts.fetch(), 'headline'));
+    return playlists;
+});
+
+
 // Publish a list of posts
 
 Meteor.publish('postsList', function(terms) {

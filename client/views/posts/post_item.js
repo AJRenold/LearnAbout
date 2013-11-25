@@ -133,6 +133,19 @@ Template.post_item.events = {
     $share.toggleClass("hidden");
     $share.find('.share-replace').sharrre(SharrreOptions);
   },
+  'click .add-playlist': function(e){
+    e.preventDefault();
+    off = $(e.toElement).offset();
+    off.top += $(e.toElement).width() / 3;
+    off.left -= 85;
+    post_parent = ($(e.toElement).parents('.post'));
+    $(".playlist-replace").each(function(){
+      if ($(this).parents('.post')[0] !== post_parent[0]) {
+        $(this).addClass("hidden");
+      }
+    });
+    $(".playlist-replace", post_parent).html($('.playlists').html()).css(off).toggleClass("hidden");
+  },
   'click .post-title': function(e){
     Meteor.call('clickedPost', this, Session.get('sessionId'), function(error, result){
       if(error)
