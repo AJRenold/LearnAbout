@@ -3,10 +3,60 @@
 	padding:10px 0;
 }
 
+.playlists{
+	position:relative;
+	.playlist{
+		position:relative;
+		width:100%;
+		@include cf;
+		&.animate{
+			@include single-transition(ease-out, top, 400ms, 0ms);
+		}
+		&.inactive{
+			.playlist-content, .playlist-actions li a{
+				background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVQYV2NkIALMnDlTkpGQOpCi9PT053gVwhSBDMOpEFkRToXoirAqxKYIQyEuRSgK8SmCKySkCKyQGEUghQC5OyXvW/4BHwAAAABJRU5ErkJggg==');
+			}
+		}
+	}
+}
+.playlist-content{
+	position:relative;
+	@extend .grid-block;
+	padding:0;
+	min-height:$grid-unit - 30px;
+	// margin-right:240px;
+	margin-right:160px;
+	.playlist-info{
+		padding:$grid-padding - 2px $grid-padding;
+		margin-left:30px;
+	}
+	.playlist-heading{
+		margin-bottom:0px;
+		.playlist-title{
+			font-size:20px;
+			color:$text;
+			font-weight:normal;
+			line-height:1;
+			&:visited{
+				color:$grey;
+			}
+			&:hover{
+				color:$red;
+			}	
+		}
+		.playlist-subinfo{
+			color:$light-text;
+			font-size:14px;
+			font-weight:normal;
+		}
+  }
+}
+
 .playlist-replace {
   position:fixed;
   background-color: silver;
   z-index: 10;
+  padding: 5px;
 }
 .posts{
 	position:relative;

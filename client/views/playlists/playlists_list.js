@@ -1,6 +1,10 @@
 Template.playlists_list.helpers({
   playlists : function () {
-    return Playlists.find();
+    if (this.userId) {
+      return Playlists.find({userId: this.userId});
+    } else {
+      return Playlists.find();
+    }
   },
   hasMorePlaylists: function(){
     // as long as we ask for N posts and all N posts showed up, then keep showing the "load more" button
@@ -19,3 +23,33 @@ Template.playlists_list.rendered = function(){
   $('body').css('min-height',distanceFromTop+160);
 }
 
+Template.playlists_list.events = {
+  'click input[type=submit]': function(e, instance){
+    e.preventDefault();
+
+    $(e.target).addClass('disabled');
+
+    if(!Meteor.user()){
+      throwError(i18n.t('You must be logged in.'));
+      return false;
+    }
+
+    var name = $('#name').val();
+
+    var properties = {
+        name: name
+    };
+
+    Meteor.call('add_playlist', properties, function(error, playlist) {
+      if(error){
+        throwError(error.reason);
+        clearSeenErrors();
+        $(e.target).removeClass('disabled');
+        if(error.error == 603)
+          Router.go('/playlists/'+error.details);
+      }else{
+        trackEvent("new playlist", {'playlistId': playlist.playlistId});
+      }
+    });
+  }
+};

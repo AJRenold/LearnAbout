@@ -19,7 +19,6 @@ Meteor.methods({
   add_playlist: function(playlist){
     var user = Meteor.user(),
         userId = user._id,
-//        postId = post._id,
         name = cleanUp(playlist.name),
         playlistId = '';
 
@@ -34,7 +33,6 @@ Meteor.methods({
     playlist = _.extend(playlist, {
       name: name,
       userId: userId
-//      postId: postId
     });
 
     playlistId = Playlists.insert(playlist);
@@ -48,6 +46,29 @@ Meteor.methods({
 
     // add the playlist's own ID to the playlist object and return it to the client
     playlist.playlistId = playlistId;
+    return playlist;
+  },
+  update_playlist: function(playlist){
+    var user = Meteor.user(),
+        userId = user._id,
+        resourceId = playlist.resourceId,
+        playlistId = playlist.playlistId;
+
+    // check that user can post
+    if (!user || !canPost(user))
+      throw new Meteor.Error(601, i18n.t('You need to login or be invited to add new playlists.'));
+
+    //console.log(playlistId, resourceId);
+    Playlists.update(
+      {_id: playlistId},
+      {$addToSet : { resourceIds : resourceId  }},
+      {upsert: true});
+
+    //console.log(playlistId);
+
+    // add the playlist's own ID to the playlist object and return it to the client
+    playlist.playlistId = playlistId;
+
     return playlist;
   },
   playlist_edit: function(post){

@@ -176,5 +176,25 @@ Template.post_item.events = {
     } else {
       Session.set('postDifficulty', '');
     }
+  },
+  'click .playlist-title': function(e){
+    playlistId = $(e.target).attr('id');
+    resourceId = $(e.target).parents('.playlist-replace').attr('id');
+
+    var properties = {
+      playlistId: playlistId,
+      resourceId: resourceId
+    };
+
+    Meteor.call('update_playlist', properties, function(error, playlist) {
+      if(error) {
+        throwError(error.reason);
+        clearSeenErrors();
+        if(error.error == 603)
+          Router.go('/playlists/'+error.details);
+      } else {
+        trackEvent("update playlist", {'playlistId': playlist.playlistId});
+      }
+    });
   }
 };

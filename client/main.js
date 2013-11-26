@@ -25,6 +25,7 @@ Meteor.subscribe('settings', function(){
 // Categories
 Meteor.subscribe('categories');
 Meteor.subscribe('playlistsList');
+Meteor.subscribe('postsList');
 
 // Current User
 // We need to subscribe to the currentUser subscription because by itself, 

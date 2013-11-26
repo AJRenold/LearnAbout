@@ -1,4 +1,23 @@
 <template name="playlists_list">
+  <div class="grid submit">
+    <form class="grid-block form-horizontal">
+      <div class="control-group">
+        <label class="control-label">{{i18n "Playlist Name"}}</label>
+        <div class="controls">
+          <input id="name" type="text" value="" />
+          <input id="postUser" type="hidden" value="{{user_id}}">
+        </div>
+      </div>
+      <div class="form-actions">
+        <input type="submit" value="{{i18n "Submit"}}" />
+      </div>
+    </form>
+  </div>
+  <div class="grid submit">
+    <div class="form-actions">
+      <a href="#">Browse Playlists</a> <a href="#">My Playlists</a>
+    </div>
+  </div>
 	<div class="playlists grid list">
 		{{#each playlists}}
 			{{> playlist_item}}

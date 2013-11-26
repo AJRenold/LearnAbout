@@ -152,6 +152,11 @@ Meteor.publish('postsList', function(terms) {
   return [];
 });
 
+Meteor.publish('postsAll', function(terms) {
+  posts = Posts.find();
+  return posts;
+});
+
 // -------------------------------------------- Comments -------------------------------------------- //
 
 // Publish comments for a specific post

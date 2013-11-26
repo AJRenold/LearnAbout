@@ -1,0 +1,12 @@
+<template name="playlist_page">
+  {{#with playlist}}
+  <div class="single-playlist grid">
+    {{> playlist_item}}
+  </div>
+	<div class="posts grid list">
+		{{#each posts}}
+			{{> post_item}}
+		{{/each}}
+	</div>
+  {{/with}}
+</template>

@@ -3,7 +3,15 @@
     <div class="playlist-content">
       <div class="playlist-info">
         <h3 class="playlist-heading">
-          <a href="{{_id}}" class="post-title">{{name}}</a>
+          <a href="/playlists/{{_id}}" class="playlist-title">{{name}}</a>
+          <span class="playlist-subinfo">
+           <span>by {{userId}}, </span>
+            {{#if resourceIds}}
+            <span>Resource: {{resourceIds.length}}</span>
+            {{else}}
+            <span>Resource: 0</span>
+            {{/if}}
+          </span>
         </h3>
       </div>
     </div>
