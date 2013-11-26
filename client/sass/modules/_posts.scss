@@ -19,13 +19,48 @@
 		}
 	}
 }
+.playlist-actions{
+	float:right;
+	padding:0;
+	li{
+		position:relative;
+		float:left;
+		margin-left:$grid-margin;
+		a{
+			@extend .grid-block;
+			background:$light-blue;
+			background:white;
+			position:relative;
+			display:block;
+			padding:0;
+			width:60px;
+			height:50px;
+			vertical-align:baseline;
+			text-align:center;
+			color:$light-text;
+			font-size:36px;
+			.action{
+				display:block;
+				height:20px;
+				width:100%;
+				position:absolute;
+				bottom:25px;
+				left:0px;
+				font-size:13px;
+				color:$light-text;
+				pointer-events:none;
+				// color:$red;
+			}
+    }
+  }
+}
 .playlist-content{
 	position:relative;
 	@extend .grid-block;
 	padding:0;
 	min-height:$grid-unit - 30px;
 	// margin-right:240px;
-	margin-right:160px;
+	margin-right:67px;
 	.playlist-info{
 		padding:$grid-padding - 2px $grid-padding;
 		margin-left:30px;
