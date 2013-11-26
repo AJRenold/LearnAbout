@@ -135,15 +135,18 @@ Template.post_item.events = {
   },
   'click .add-playlist': function(e){
     e.preventDefault();
-    off = $(e.toElement).offset();
-    off.top += $(e.toElement).width() / 3;
-    off.left -= 85;
+    console.log(e)
+    var off = { 'top': $(e.toElement).offset().top - $(window).scrollTop(),
+                'left': $(e.toElement).offset().left - $(window).scrollLeft()
+    }
+    off.top += 78;
     post_parent = ($(e.toElement).parents('.post'));
     $(".playlist-replace").each(function(){
       if ($(this).parents('.post')[0] !== post_parent[0]) {
         $(this).addClass("hidden");
       }
     });
+    $(e.target).toggleClass("clicked");
     $(".playlist-replace", post_parent).html($('.playlists').html()).css(off).toggleClass("hidden");
   },
   'click .post-title': function(e){
@@ -177,7 +180,8 @@ Template.post_item.events = {
       Session.set('postDifficulty', '');
     }
   },
-  'click .playlist-title': function(e){
+  'click .add-playlist-title': function(e){
+    $(e.target).parent().toggleClass('clicked');
     playlistId = $(e.target).attr('id');
     resourceId = $(e.target).parents('.playlist-replace').attr('id');
 

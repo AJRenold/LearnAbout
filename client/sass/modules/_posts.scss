@@ -53,10 +53,26 @@
 }
 
 .playlist-replace {
+  width:140px;
   position:fixed;
-  background-color: silver;
+  background-color: lightgrey;
   z-index: 10;
   padding: 5px;
+	@include border-radius(4px);
+  .add-playlist-title{
+		display:inline-block;
+		font-size:14px;
+		@include border-radius(3px);
+		background:white;
+		padding:0px 6px;
+		font-weight:normal;
+		vertical-align:middle;
+    margin-bottom:5px;
+		&:hover{
+			background:$red;
+			color:white;
+		}
+	}
 }
 .posts{
 	position:relative;
@@ -245,6 +261,11 @@
 			color:$light-text;
 			font-size:36px;
 			line-height:50px;
+      &.add-playlist{
+        .action{
+          bottom:35px;
+        }
+      }
 			&.edit-link{
 				color:$red;
 			}
@@ -259,6 +280,10 @@
 				color:$blue;
 			}
 			&:hover{
+				background:$highlight-color url("/img/bg-header.png") top center;
+				color:white;
+			}
+      &.clicked{
 				background:$highlight-color url("/img/bg-header.png") top center;
 				color:white;
 			}
