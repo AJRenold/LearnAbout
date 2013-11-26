@@ -1,11 +1,17 @@
 <template name="playlist_item">
   {{# with playlist}}
+  <div class="playlist">
+    <ul class="playlist-actions">
+      <li class="clone-playlist desktop">
+        <a class="clone-playlist" href="#"><span class="action">clone playlist</span></a>
+      </li>
+    </ul>
     <div class="playlist-content">
       <div class="playlist-info">
         <h3 class="playlist-heading">
           <a href="/playlists/{{_id}}" class="playlist-title">{{name}}</a>
           <span class="playlist-subinfo">
-           <span>by {{userId}}, </span>
+           <span>by {{user_name}}, </span>
             {{#if resourceIds}}
             <span>Resource: {{resourceIds.length}}</span>
             {{else}}
@@ -15,5 +21,6 @@
         </h3>
       </div>
     </div>
+  </div>
   {{/with}}
 </template>

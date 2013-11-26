@@ -6,6 +6,9 @@ Template.playlists_list.helpers({
       return Playlists.find();
     }
   },
+  user_id : function() {
+    return Meteor.user()._id;
+  },
   hasMorePlaylists: function(){
     // as long as we ask for N posts and all N posts showed up, then keep showing the "load more" button
     return parseInt(Session.get('playlistsLimit')) == this.playlistsCount
