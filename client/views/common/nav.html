@@ -6,20 +6,11 @@
     <ul class="nav site-nav desktop">
       {{#if isAdmin}}
       <li class="dropdown">
-        <a class="View" href="/">{{i18n "View"}}</a>
-        <div class="dropdown-menu">
-          <ul role="menu" aria-labelledby="dLabel">
-            <li><a class="top" href="/top">{{i18n "Top"}}</a></li>
-            <li><a class="new" href="/new">{{i18n "New"}}</a></li>
-            <li><a class="best" href="/best">{{i18n "Best"}}</a></li>
-            <li><a class="digest" href="/digest">{{i18n "Digest"}}</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="dropdown">
         <a class="admin" href="/">{{i18n "Administration"}}</a>
         <div class="dropdown-menu">
           <ul role="menu" aria-labelledby="dLabel">
+            <li><a class="new" href="/new">{{i18n "New"}}</a></li>
+            <li><a class="best" href="/best">{{i18n "Best"}}</a></li>
             <li><a class="pending" href="/pending">{{i18n "Pending"}}</a></li>
             <li><a class="users" href="/all-users">{{i18n "Users"}}</a></li>
             <li><a class="settings" href="/settings">{{i18n "Settings"}}</a></li>
@@ -27,6 +18,12 @@
             <li><a class="categories" href="/toolbox">{{i18n "Toolbox"}}</a></li>
           </ul>
         </div>
+      </li>
+      {{else}}
+      <li>
+        <a href="/">
+          <img class="logo-image" src="/img/FINAL_logo.png" alt="Learn About"/>
+        </a>
       </li>
       {{/if}}
       <li>
@@ -39,21 +36,11 @@
       {{/if}}
     </ul>
 
-    {{#if logo_url}}
-      <h1 class="logo image" style="height:{{logo_height}}px; width:{{logo_width}}px; top:{{logo_top}}px; margin-left:{{logo_offset}}px;">
-        <a href="/">
-          <img src="{{logo_url}}" style="height:{{logo_height}}px;" alt="{{site_title}}"/>
-        </a>
-      </h1>
-    {{else}}
-      <h1 class="logo"><a href="/">{{site_title}}</a></h1>
-    {{/if}}
-
     {{#if canView}}
     <ul class="nav user-nav desktop">
-      <li><a id="submit" class="submit button" href="/submit">{{i18n "Add Resource"}}</a></li>
-      <li><a id="submit" class="submit button" href="/playlists_list">{{i18n "Playlist"}}</a></li>
-      <li><a id="submit" class="submit button" href="/">{{i18n "Topics"}}</a></li>
+      <li><a id="submit" class="submit button" href="/submit">{{i18n "Post Resource"}}</a></li>
+      <li><a id="submit" class="submit button" href="/playlists_list">{{i18n "Playlists"}}</a></li>
+      <li><a id="submit" class="submit button" href="/">{{i18n "Resources"}}</a></li>
     </ul>
     {{/if}}
 

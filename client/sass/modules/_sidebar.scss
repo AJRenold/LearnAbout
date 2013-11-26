@@ -51,7 +51,7 @@
 		font-size:13px;
 		background:white(0.3);
 		@include box-shadow(none);
-		color:$light-text;
+		color:#a03232;
 	}
 	.sidebar-open &{
 		left:0px;
