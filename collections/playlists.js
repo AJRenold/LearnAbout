@@ -19,6 +19,7 @@ Meteor.methods({
   add_playlist: function(playlist){
     var user = Meteor.user(),
         userId = user._id,
+        userName = user.username;
         name = cleanUp(playlist.name),
         playlistId = '';
 
@@ -32,7 +33,8 @@ Meteor.methods({
 
     playlist = _.extend(playlist, {
       name: name,
-      userId: userId
+      userId: userId,
+      userName: userName
     });
 
     playlistId = Playlists.insert(playlist);

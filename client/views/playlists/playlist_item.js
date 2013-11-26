@@ -8,7 +8,7 @@ Template.playlist_item.helpers({
     return this.playlist || this;
   },
   user_name: function() {
-    return getDisplayNameById(this.userId);
+    return this.userName;
   }
 });
 
