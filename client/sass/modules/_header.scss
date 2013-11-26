@@ -10,7 +10,7 @@
 .header{
 	background:$highlight-color url("/img/bg-header.png") top center;
 	background-color:$highlight-color;
-	margin-bottom:$grid-margin;
+	margin-bottom:36px;
 	height:$grid-unit;
 	position:relative;
 	@include cf;
@@ -50,11 +50,13 @@
 		}
 	}
 	.user-nav{
+    top: 51px;
 		float:right;
 		margin-right:10px;
 		position:relative;
 		z-index:20;
 		.submit{
+      border-radius: 0px 0px 6px 6px;
 			// background:$red;
 			// display:block;
 			// padding:0px 10px;
@@ -76,6 +78,7 @@
 	z-index:20;
 	float:right;
 	margin:20px 10px 0 0;
+  left: 295px;
 	#login-buttons{
 		position:relative;
 		line-height:26px;
@@ -161,7 +164,7 @@
   height:26px;
   font-weight:normal;
   text-transform:uppercase;
-}
+  }
 }
 .search{
 	position: relative;
