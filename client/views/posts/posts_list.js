@@ -15,9 +15,6 @@ Template.posts_list.helpers({
     var count = parseInt(Session.get('postsLimit')) + parseInt(getSetting('postsPerPage', 10));
     var categorySegment = Session.get('categorySlug') ? Session.get('categorySlug') + '/' : '';
     return '/' + Session.get('view') + '/' + categorySegment + count;
-  },
-  playlists: function(){
-    return Playlists.find();
   }
 });
 

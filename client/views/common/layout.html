@@ -33,6 +33,11 @@
       {{yield}}
       {{> sidebar}}
       {{> footer}}
+      <div class="playlists grid list hidden">
+        {{#each playlists}}
+         {{> playlist_add_item}}
+        {{/each}}
+      </div>
       <div class="overlay hidden"></div>
     </div>
     {{{extraCode}}}

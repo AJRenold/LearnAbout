@@ -16,7 +16,10 @@ Template.layout.helpers({
   },
   extraCode: function(){
     return getSetting('extraCode');
-  }     
+  },
+  playlists: function(){
+    return Playlists.find({ 'userId': Meteor.userId() });
+  }
 });
 
 Template.layout.created = function(){

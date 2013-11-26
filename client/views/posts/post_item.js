@@ -135,7 +135,6 @@ Template.post_item.events = {
   },
   'click .add-playlist': function(e){
     e.preventDefault();
-    console.log(e)
     var off = { 'top': $(e.toElement).offset().top - $(window).scrollTop(),
                 'left': $(e.toElement).offset().left - $(window).scrollLeft()
     }
