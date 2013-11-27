@@ -219,7 +219,7 @@ Router.before(filters.nProgressHook, {only: [
 
 Router.before(filters.canView);
 Router.before(filters.hasCompletedProfile);
-Router.before(filters.isLoggedIn, {only: ['comment_reply','post_submit']});
+Router.before(filters.isLoggedIn, {only: ['comment_reply','post_submit','playlist_page','playlists_list']});
 Router.before(filters.isLoggedOut, {only: ['signin', 'signup']});
 Router.before(filters.canPost, {only: ['posts_pending', 'comment_reply', 'post_submit']});
 Router.before(filters.canEditPost, {only: ['post_edit']});
@@ -387,6 +387,7 @@ PlaylistPageController = RouteController.extend({
   after: function () {
   }
 });
+
 PlaylistsListController = RouteController.extend({
   template: 'playlists_list',
   waitOn: function () {

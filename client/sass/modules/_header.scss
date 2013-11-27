@@ -10,8 +10,7 @@
 .header{
 	background:$highlight-color url("/img/bg-header.png") top center;
 	background-color:$highlight-color;
-	margin-bottom:36px;
-	height:$grid-unit;
+	height:78px;
 	position:relative;
 	@include cf;
 	@include border-radius(0 0 3px 3px);
@@ -49,19 +48,26 @@
 			}
 		}
 	}
-	.user-nav{
-    top: 51px;
-		float:right;
-		margin-right:10px;
-		position:relative;
+}
+.second-header{
+  height:38px;
+  position:relative;
+  .user-nav{
+    float:right;
+    margin-top:1px;
+    margin-right:5%;
 		z-index:20;
+    >li{
+		  @include horizontal-list-item;
+		  margin-right:10px;
+    }
 		.submit{
       border-radius: 0px 0px 6px 6px;
 			// background:$red;
 			// display:block;
 			// padding:0px 10px;
 		}
-	}
+  }
 }
 // @media only screen and (-webkit-min-device-pixel-ratio: 1.5){
 // 	.header{
@@ -74,11 +80,10 @@
 // 	}
 // }
 .auth-buttons{
-	position:relative;
 	z-index:20;
-	float:right;
-	margin:20px 10px 0 0;
-  left: 295px;
+  float:right;
+  margin-top:22px;
+  margin-right:22px;
 	#login-buttons{
 		position:relative;
 		line-height:26px;

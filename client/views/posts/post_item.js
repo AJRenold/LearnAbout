@@ -134,6 +134,12 @@ Template.post_item.events = {
     $share.find('.share-replace').sharrre(SharrreOptions);
   },
   'click .add-playlist': function(e){
+    
+    if(Meteor.user()===null){
+      window.location.pathname = '/signup'
+      return
+    }
+
     e.preventDefault();
     var off = { 'top': $(e.toElement).offset().top - $(window).scrollTop(),
                 'left': $(e.toElement).offset().left - $(window).scrollLeft()
@@ -159,6 +165,8 @@ Template.post_item.events = {
     subCategories = Session.get('subCategories');
     if(subCategories.length !== 0){
       e.preventDefault();
+    } else {
+      $('body').addClass('sidebar-open');
     }
 
     idx = _.indexOf(subCategories, categoryName);
@@ -173,6 +181,10 @@ Template.post_item.events = {
   'click .post-difficulty': function(e){
     var val = $(e.target).text();
     var currentFilter = Session.get('postDifficulty');
+    if(currentFilter === ''){
+      $('body').addClass('sidebar-open');
+    }
+
     if(val !== currentFilter) {
       Session.set('postDifficulty', val);
     } else {

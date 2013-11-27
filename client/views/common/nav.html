@@ -30,18 +30,16 @@
         {{> search}}
       </li>
     </ul>
-
-    {{#if canView}}
-    <ul class="nav user-nav desktop">
-      <li><a id="submit" class="submit button" href="/submit">{{i18n "Post Resource"}}</a></li>
-      <li><a id="submit" class="submit button" href="/playlists_list">{{i18n "Playlists"}}</a></li>
-      <li><a id="submit" class="submit button" href="/">{{i18n "Resources"}}</a></li>
-    </ul>
-    {{/if}}
-
     <div class="auth-buttons">
       {{loginButtons align="right"}}
     </div>
 
   </header>
+  <div class="second-header grid">
+      <ul class="user-nav">
+        <li><a id="submit" class="submit button" href="/submit">{{i18n "Post Resource"}}</a></li>
+        <li><a id="submit" class="submit button" href="/playlists_list">{{i18n "Playlists"}}</a></li>
+        <li><a id="submit" class="submit button" href="/">{{i18n "Resources"}}</a></li>
+      </ul>
+  </div>
 </template>
