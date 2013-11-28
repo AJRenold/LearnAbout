@@ -3,7 +3,7 @@ Template.playlists_list.helpers({
     if (this.userId) {
       return Playlists.find({userId: this.userId});
     } else {
-      return Playlists.find();
+      return Playlists.find({userId: { $ne: Meteor.user()._id }});
     }
   },
   user_id : function() {

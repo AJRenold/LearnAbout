@@ -39,6 +39,10 @@
 			text-align:center;
 			color:$light-text;
 			font-size:36px;
+      &:hover{
+				background:$highlight-color url("/img/bg-header.png") top center;
+				color:white;
+			}
 			.action{
 				display:block;
 				height:20px;

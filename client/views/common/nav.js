@@ -23,6 +23,9 @@ Template.nav.helpers({
   canPost: function(){
     return canPost(Meteor.user());
   },
+  userId: function(){
+    return Meteor.userId();
+  },
   requirePostsApproval: function(){
     return getSetting('requirePostsApproval');
   },
