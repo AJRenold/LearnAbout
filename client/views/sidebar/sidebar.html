@@ -13,6 +13,7 @@
         {{#if isSubMenu }}
         <ul id="categoryList">
           <li class="home"><a href="/">x</a>{{ currentParent }}</li>
+          <li style="text-transform:none; font-size:14px;">More Filters:</li>
           {{#each postCategories}}
             {{> sidebar_item }}
           {{/each}}

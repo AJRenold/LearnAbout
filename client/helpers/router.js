@@ -308,6 +308,9 @@ PostsDigestController = RouteController.extend({
     return {
       posts: Posts.find(parameters.find, parameters.options)
     }
+  },
+  after: function() {
+    Session.set('subCategories', []);
   }
 });
 
@@ -328,6 +331,7 @@ PostPageController = RouteController.extend({
   after: function () {
     window.queueComments = false;
     window.openedComments = [];
+    Session.set('subCategories', []);
     // TODO: scroll to comment position
   } 
 });
@@ -349,6 +353,7 @@ CommentPageController = RouteController.extend({
   },
   after: function () {
     window.queueComments = false;
+    Session.set('subCategories', []);
   } 
 });
 
@@ -369,6 +374,9 @@ UserPageController = RouteController.extend({
         user: (typeof findById == "undefined") ? findBySlug : findById
       }
     }
+  },
+  after: function() {
+    Session.set('subCategories', []);
   }
 });
 
@@ -385,6 +393,7 @@ PlaylistPageController = RouteController.extend({
     return {playlistId: this.params._id};
   },
   after: function () {
+    Session.set('subCategories', []);
   }
 });
 
@@ -399,6 +408,7 @@ PlaylistsListController = RouteController.extend({
     return {userId: this.params._id};
   },
   after: function () {
+    Session.set('subCategories', []);
   }
 });
 
