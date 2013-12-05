@@ -214,7 +214,8 @@ Router.before(filters.nProgressHook, {only: [
   'comment_reply',
   'user_edit',
   'user_profile',
-  'all-users'
+  'all-users',
+  'playlists_list'
 ]});
 
 Router.before(filters.canView);
