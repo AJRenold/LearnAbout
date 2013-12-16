@@ -39,6 +39,7 @@ Template.sidebar.helpers({
         }
       });
     });
+    subCats = _.sortBy(subCats, function(cat){ return cat.name; });
     return subCats;
   }
 });
