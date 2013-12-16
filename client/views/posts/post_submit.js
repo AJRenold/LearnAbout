@@ -92,10 +92,13 @@ Template.post_submit.events = {
         $(e.target).removeClass('disabled');
         if(error.error == 603)
           Router.go('/posts/'+error.details);
-      }else{
+      } else {
         trackEvent("new post", {'postId': post.postId});
-        if(post.status === STATUS_PENDING)
-          throwError('Thanks, your post is awaiting approval.')
+        if(post.status === STATUS_PENDING){
+          throwError('Thanks! Your resource is awaiting approval.')
+        } else {
+          throwError('Thanks! Your resource has been posted')
+        }
         Router.go('/posts/'+post.postId);
       }
     });

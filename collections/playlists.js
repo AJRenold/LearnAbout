@@ -66,10 +66,7 @@ Meteor.methods({
       {$addToSet : { resourceIds : resourceId  }},
       {upsert: true});
 
-    //console.log(playlistId);
-
-    // add the playlist's own ID to the playlist object and return it to the client
-    playlist.playlistId = playlistId;
+    playlist = Playlists.findOne({_id: playlistId});
 
     return playlist;
   },

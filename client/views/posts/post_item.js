@@ -208,7 +208,9 @@ Template.post_item.events = {
         if(error.error == 603)
           Router.go('/playlists/'+error.details);
       } else {
-        trackEvent("update playlist", {'playlistId': playlist.playlistId});
+        console.log(playlist)
+        throwError('Successfully added to Playlist "' + playlist.name + '"');
+        trackEvent("update playlist", {'playlistId': playlist._id});
       }
     });
   }
