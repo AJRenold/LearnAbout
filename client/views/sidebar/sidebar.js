@@ -1,6 +1,6 @@
 Template.sidebar.helpers({
   categories : function() {
-    return Categories.find();
+    return Categories.find({}, {sort: {'name': 1}});
   },
   checkBeginnerFilter : function() {
     return Session.get('postDifficulty') == 'Beginner' ? 'checked' : '';
