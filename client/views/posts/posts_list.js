@@ -11,6 +11,10 @@ Template.posts_list.helpers({
     // as long as we ask for N posts and all N posts showed up, then keep showing the "load more" button
     return parseInt(Session.get('postsLimit')) == this.postsCount
   },
+  searchQuery: function(){
+    // as long as we ask for N posts and all N posts showed up, then keep showing the "load more" button
+    return Session.get('searchQuery')
+  },
   loadMoreUrl: function () {
     var count = parseInt(Session.get('postsLimit')) + parseInt(getSetting('postsPerPage', 10));
     var categorySegment = Session.get('categorySlug') ? Session.get('categorySlug') + '/' : '';
